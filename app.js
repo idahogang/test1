@@ -8,14 +8,17 @@ const IMG_EXT = 'jpg';
 const audioUrls = {};
 
 let episodes = [];
+let coversManifest = {};
 
-fetch('episodes.csv')
-  .then(r => r.text())
-  .then(text => {
-    episodes = processEpisodes(parseCSV(text));
-    populateYearFilter();
-    render();
-  });
+Promise.all([
+  fetch('episodes.csv').then(r => r.text()),
+  fetch('covers-manifest.json').then(r => r.json()).catch(() => ({}))
+]).then(([csvText, manifest]) => {
+  coversManifest = manifest;
+  episodes = processEpisodes(parseCSV(csvText));
+  populateYearFilter();
+  render();
+});
 
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('sort').addEventListener('change', render);
@@ -52,7 +55,8 @@ function render() {
 }
 
 function cardHTML(ep) {
-  const coverSrc = `covers/TC${ep.numStr}_${ep.title}.${IMG_EXT}`;
+  const coverFile = coversManifest[ep.numStr] || `TC${ep.numStr}_${ep.title}.${IMG_EXT}`;
+  const coverSrc = `covers/${coverFile}`;
   const url = audioUrls[ep.numStr] || null;
 
   const audioHtml = url
