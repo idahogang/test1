@@ -38,10 +38,7 @@ function render() {
     return sortBy === 'oldest' ? da - db : db - da;
   });
 
-  document.getElementById('count').textContent =
-    `${list.length} of ${episodes.length} episodes`;
-
-  document.getElementById('grid').innerHTML = list.length
+document.getElementById('grid').innerHTML = list.length
     ? list.map(cardHTML).join('')
     : '<div class="empty">No episodes match your search.</div>';
 }
