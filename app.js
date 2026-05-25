@@ -70,9 +70,9 @@ function cardHTML(ep) {
     <div class="meta">
       <span class="ep-date">${esc(formatDate(ep.date))}</span>
     </div>
+    ${ep.description? `<p class="ep-desc">${esc(ep.description)}</p>` : ''}
     ${ep.guestsStr  ? `<div class="ep-guests">${esc(ep.guestsStr)}</div>` : ''}
     ${ep.year       ? `<div class="ep-topfive">Top 5: ${ep.year}</div>` : ''}
-    ${ep.description? `<p class="ep-desc">${esc(ep.description)}</p>` : ''}
     <div class="audio-row">${audioHtml}</div>
   </div>
 </div>`;
