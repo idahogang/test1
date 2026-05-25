@@ -1,12 +1,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f0f0f0;
-  --card: #ffffff;
-  --header: #111111;
+  --bg: #120235;
+  --card: transparent;
+  --header: #120235;
   --accent: #c0392b;
-  --text: #1a1a1a;
-  --muted: #666666;
+  --text: #ffffff;
+  --muted: #ffffff;
   --border: #e0e0e0;
 }
 
@@ -116,17 +116,9 @@ main {
 
 /* ── Card ── */
 .card {
-  background: var(--card);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+  background: transparent;
   display: flex;
   flex-direction: column;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.13);
 }
 
 /* Cover */
@@ -185,7 +177,7 @@ main {
 
 .ep-guests {
   font-size: 0.76rem;
-  color: #444;
+  color: #ffffff;
   font-style: italic;
 }
 
