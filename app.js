@@ -71,7 +71,7 @@ function cardHTML(ep) {
       <span class="ep-date">${esc(formatDate(ep.date))}</span>
     </div>
     ${ep.description? `<p class="ep-desc">${esc(ep.description)}</p>` : ''}
-    ${ep.guestsStr  ? `<div class="ep-guests">${esc(ep.guestsStr)}</div>` : ''}
+    ${ep.guestsStr  ? `<div class="ep-guests">Guests: ${esc(ep.guestsStr)}</div>` : ''}
     ${ep.year       ? `<div class="ep-topfive">Top 5: ${ep.year}</div>` : ''}
     <div class="audio-row">${audioHtml}</div>
   </div>
