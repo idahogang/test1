@@ -186,6 +186,7 @@ main {
 .ep-guests {
   font-size: 0.76rem;
   color: #444;
+  font-style: italic;
 }
 
 .ep-topfive {
