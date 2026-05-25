@@ -110,8 +110,8 @@ main {
 
 #grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 9px;
 }
 
 /* ── Card ── */
