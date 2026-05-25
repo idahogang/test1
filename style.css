@@ -149,12 +149,10 @@ main {
 
 /* Body */
 .card-body {
-  padding: 13px;
+  padding: 4px 13px 13px;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  max-height: 180px;
-  overflow-y: auto;
 }
 
 .ep-title {
@@ -200,7 +198,26 @@ main {
   font-size: 0.78rem;
   color: var(--muted);
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+.desc-wrap.expanded .ep-desc {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+.more-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2563eb;
+  font-size: 0.78rem;
+  cursor: pointer;
+  text-align: left;
+}
+.more-btn:hover { text-decoration: underline; }
 
 .audio-row {
   margin-top: auto;
