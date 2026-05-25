@@ -59,8 +59,6 @@ function cardHTML(ep) {
     ? `<a class="play-btn" href="${attr(url)}" target="_blank" rel="noopener">&#9654; Play</a>`
     : `<span class="play-btn soon">Audio coming soon</span>`;
 
-  const topFiveText = ep.topFive && ep.topFive !== '—' ? ep.topFive : null;
-
   return `<div class="card">
   <div class="cover-wrap">
     <img src="${attr(coverSrc)}" alt="${attr(ep.title)}" loading="lazy"
@@ -74,7 +72,7 @@ function cardHTML(ep) {
       ${ep.year ? `<span class="year-tag">${ep.year}</span>` : ''}
     </div>
     ${ep.guestsStr  ? `<div class="ep-guests">${esc(ep.guestsStr)}</div>` : ''}
-    ${topFiveText   ? `<div class="ep-topfive">Top 5: ${esc(topFiveText)}</div>` : ''}
+    ${ep.year       ? `<div class="ep-topfive">Top 5: ${ep.year}</div>` : ''}
     ${ep.description? `<p class="ep-desc">${esc(ep.description)}</p>` : ''}
     <div class="audio-row">${audioHtml}</div>
   </div>
