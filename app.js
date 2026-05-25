@@ -44,7 +44,6 @@ function render() {
   document.getElementById('grid').innerHTML = list.length
     ? list.map(cardHTML).join('')
     : '<div class="empty">No episodes match your search.</div>';
-  setTimeout(checkOverflow, 0);
 }
 
 function cardHTML(ep) {
@@ -67,7 +66,7 @@ function cardHTML(ep) {
     <div class="meta">
       <span class="ep-date">${esc(formatDate(ep.date))}</span>
     </div>
-    ${ep.description ? `<div class="desc-wrap"><p class="ep-desc">${esc(ep.description)}</p><button class="more-btn" onclick="expandDesc(this)">more</button></div>` : ''}
+    ${ep.description ? `<p class="ep-desc">${esc(ep.description)}</p>` : ''}
     ${ep.guestsStr  ? `<div class="ep-guests">Guests: ${esc(ep.guestsStr)}</div>` : ''}
     ${ep.year       ? `<div class="ep-topfive">Top 5: ${ep.year}</div>` : ''}
     <div class="audio-row">${audioHtml}</div>
@@ -136,19 +135,6 @@ function formatDate(str) {
   if (!m || !d || !y) return str;
   const dt = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
   return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
-
-function checkOverflow() {
-  document.querySelectorAll('.desc-wrap').forEach(wrap => {
-    const desc = wrap.querySelector('.ep-desc');
-    const btn  = wrap.querySelector('.more-btn');
-    if (desc.scrollHeight <= desc.clientHeight + 2) btn.hidden = true;
-  });
-}
-
-function expandDesc(btn) {
-  btn.closest('.desc-wrap').classList.add('expanded');
-  btn.hidden = true;
 }
 
 function esc(s) {
