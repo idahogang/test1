@@ -183,20 +183,19 @@ main {
 .audio-row {
   margin-top: auto;
   padding-top: 9px;
+}
+
+.header-icons {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
+  padding: 10px 0 4px;
 }
 
-.podcast-btn {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.podcast-btn img {
-  height: 28px;
-  width: 28px;
+.header-icons a img {
+  height: 32px;
+  width: 32px;
   display: block;
 }
 

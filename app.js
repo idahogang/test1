@@ -55,8 +55,6 @@ function cardHTML(ep) {
     ? `<a class="play-btn" href="${attr(url)}" target="_blank" rel="noopener">&#9654; Play</a>`
     : `<span class="play-btn soon">Audio coming soon</span>`;
 
-  const rssUrl = `https://example.com/feed.rss`;
-
   return `<div class="card">
   <div class="cover-wrap">
     <img src="${attr(coverSrc)}" alt="${attr(ep.title)}" loading="lazy"
@@ -71,12 +69,7 @@ function cardHTML(ep) {
     ${ep.description ? `<p class="ep-desc">${esc(ep.description)}</p>` : ''}
     ${ep.guestsStr  ? `<div class="ep-guests">Guests: ${esc(ep.guestsStr)}</div>` : ''}
     ${ep.year       ? `<div class="ep-topfive">Top 5: ${ep.year}</div>` : ''}
-    <div class="audio-row">
-      ${audioHtml}
-      <a class="podcast-btn" href="${rssUrl}" title="Subscribe in podcast app">
-        <img src="podcasts.svg" alt="Subscribe">
-      </a>
-    </div>
+    <div class="audio-row">${audioHtml}</div>
   </div>
 </div>`;
 }
