@@ -153,7 +153,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  flex: 1;
+  max-height: 180px;
+  overflow-y: auto;
 }
 
 .ep-title {
@@ -199,10 +200,6 @@ main {
   font-size: 0.78rem;
   color: var(--muted);
   line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .audio-row {
