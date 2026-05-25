@@ -16,21 +16,17 @@ Promise.all([
 ]).then(([csvText, manifest]) => {
   coversManifest = manifest;
   episodes = processEpisodes(parseCSV(csvText));
-  populateYearFilter();
   render();
 });
 
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('sort').addEventListener('change', render);
-document.getElementById('year-filter').addEventListener('change', render);
 
 function render() {
-  const query   = document.getElementById('search').value.toLowerCase().trim();
-  const sortBy  = document.getElementById('sort').value;
-  const yearVal = document.getElementById('year-filter').value;
+  const query  = document.getElementById('search').value.toLowerCase().trim();
+  const sortBy = document.getElementById('sort').value;
 
   let list = episodes.filter(ep => {
-    if (yearVal && String(ep.year) !== yearVal) return false;
     if (!query) return true;
     const haystack = [ep.numStr, ep.title, ep.description, ep.guestsStr, ep.topFive, ep.date]
       .join(' ').toLowerCase();
@@ -38,12 +34,8 @@ function render() {
   });
 
   list = [...list].sort((a, b) => {
-    if (sortBy === 'date') return new Date(a.date) - new Date(b.date);
-    if (sortBy === 'year') {
-      const ya = a.year ?? 9999, yb = b.year ?? 9999;
-      return ya !== yb ? ya - yb : a.num - b.num;
-    }
-    return a.num - b.num;
+    const da = new Date(a.date), db = new Date(b.date);
+    return sortBy === 'oldest' ? da - db : db - da;
   });
 
   document.getElementById('count').textContent =
@@ -80,16 +72,6 @@ function cardHTML(ep) {
     <div class="audio-row">${audioHtml}</div>
   </div>
 </div>`;
-}
-
-function populateYearFilter() {
-  const years = [...new Set(episodes.map(e => e.year).filter(Boolean))].sort((a, b) => a - b);
-  const sel = document.getElementById('year-filter');
-  years.forEach(y => {
-    const o = document.createElement('option');
-    o.value = y; o.textContent = y;
-    sel.appendChild(o);
-  });
 }
 
 // ── Data processing ──────────────────────────────────────────────
