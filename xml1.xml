@@ -5,6 +5,7 @@
   <channel>
     <title>Time Crisis Archive</title>
     <link>https://ohiomafia.com</link>
+    <description>ohiomafia.com/timecrisis</description>
     <itunes:category text="Music"/>
     <itunes:image href="https://raw.githubusercontent.com/ohiomafia/timecrisis/refs/heads/claude/great-wright-JYaTo/tcthumbnail.png"/>
     <itunes:explicit>no</itunes:explicit>
